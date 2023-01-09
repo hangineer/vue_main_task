@@ -1,5 +1,6 @@
 
-  import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+  import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
   // 產品資料格式
   const app = {
     data(){
@@ -8,17 +9,22 @@
         apiPath:"hannahtw",
         selectedItem : {},
         products:[],
-        timeout: 5000,
-        alertIsShow:false,
+        // timeout: 5000,
+        // alertIsShow:false,
       }
     },
     mounted() {
-        this.alertIsShow = true;
         //確認是否為管理者
         const adminToken =  document.cookie.replace(/(?:(?:^|.*;\s*)adminToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         axios.defaults.headers.common['Authorization'] = adminToken; 
         axios.post(`${this.baseUrl}/v2/api/user/check`)
         .then(res => {
+            Swal.fire({
+                icon: 'success',
+                title: '登入及驗證成功',
+                showConfirmButton: true,
+                timer: 2500
+              });
             this.getData();
         })
         .catch(err => {

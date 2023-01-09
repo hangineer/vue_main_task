@@ -13,11 +13,10 @@ const app = {
         login(){
             axios.post(`${this.baseUrl}/v2/admin/signin`, this.userInfo)
             .then(res => {
-                console.log(res)
                 const { token , expired } = res.data;
                 document.cookie = `adminToken = ${token}; expired = ${new Date(expired)};`
-                this.alertIsShow = true;
                 window.location.href = "product.html"
+
             })
             .catch(err => {
                 console.dir(err);
