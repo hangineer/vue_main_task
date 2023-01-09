@@ -9,30 +9,31 @@
         apiPath:"hannahtw",
         selectedItem : {},
         products:[],
-        // timeout: 5000,
-        // alertIsShow:false,
       }
     },
     mounted() {
-        //確認是否為管理者
+        //讀取
         const adminToken =  document.cookie.replace(/(?:(?:^|.*;\s*)adminToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         axios.defaults.headers.common['Authorization'] = adminToken; 
-        axios.post(`${this.baseUrl}/v2/api/user/check`)
-        .then(res => {
-            Swal.fire({
-                icon: 'success',
-                title: '登入及驗證成功',
-                showConfirmButton: true,
-                timer: 2500
-              });
-            this.getData();
-        })
-        .catch(err => {
-            console.dir(err);
-            window.location.href = "index.html";
-        })
+        this.checkIsAdmin();
     },
     methods:{
+        checkIsAdmin(){
+            axios.post(`${this.baseUrl}/v2/api/user/check`)
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '登入及驗證成功',
+                    showConfirmButton: true,
+                    timer: 2500
+                  });
+                this.getData();
+            })
+            .catch(err => {
+                console.dir(err);
+                window.location.href = "index.html";
+            })
+        },
         getData(){
             axios.get(`${this.baseUrl}/v2/api/${this.apiPath}/admin/products`)
             .then(res => {

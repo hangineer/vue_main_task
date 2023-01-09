@@ -14,6 +14,7 @@ const app = {
             axios.post(`${this.baseUrl}/v2/admin/signin`, this.userInfo)
             .then(res => {
                 const { token , expired } = res.data;
+                //寫入
                 document.cookie = `adminToken = ${token}; expired = ${new Date(expired)};`
                 window.location.href = "product.html"
 
