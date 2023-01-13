@@ -7,7 +7,7 @@
       return{
         baseUrl:"https://vue3-course-api.hexschool.io",
         apiPath:"hannahtw",
-        selectedItem : {},
+        selectedProduct : {},
         products:[],
       }
     },
@@ -37,16 +37,15 @@
         getData(){
             axios.get(`${this.baseUrl}/v2/api/${this.apiPath}/admin/products`)
             .then(res => {
-                console.log(res);
                 this.products = res.data.products;
 
             })
         },
         //數字轉千分位
         numberWithCommas(x){
-            let num = x.toString().split(".")
-            num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g,",") //\B: 另外一側必須不是 \w 的字元
-            return num.join(".")
+            let num = x.toString().split(".");
+            num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g,","); //\B: 另外一側必須不是 \w 的字元
+            return num.join(".");
         },
     }
 
