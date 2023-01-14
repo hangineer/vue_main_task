@@ -20,6 +20,13 @@ const app = {
 
             })
             .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '請確認電子郵件與密碼無誤',
+                    showConfirmButton: true,
+                    timer: 3000                  
+                });
                 console.dir(err);
                 throw(err);
             })
