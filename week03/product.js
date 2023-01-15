@@ -61,21 +61,42 @@ let  delProductModal = null;
             num[0] = num[0].replace(/\B(?=(\d{3})+(?!\d))/g,",") //\B: 另外一側必須不是 \w 的字元
             return num.join(".")
         },
-
+        openModal(status,product){
+            if(status === "edit"){
+                this.tempProduct = {...product};
+                this.isNew = false;
+                productModal.show();
+            }else if(status === "add"){
+                this.tempProduct = {
+                    imagesUrl: [],
+                };
+                this.isNew = true;
+                productModal.show();
+            }else if(status === "delete"){
+                this.tempProduct = {...product};
+                delProductModal.show();
+            }
+        },
         //編輯產品
-        editBtn(product){
-            this.tempProduct = {...product};
-            this.isNew = false;
-            productModal.show();
-        },
+        // editBtn(product){
+        //     this.tempProduct = {...product};
+        //     this.isNew = false;
+        //     productModal.show();
+        // },
         //新增商品
-        addBtn(){
-            this.tempProduct = {
-                imagesUrl: [],
-            };
-            this.isNew = true;
-            productModal.show();
-        },
+        // addBtn(){
+        //     this.tempProduct = {
+        //         imagesUrl: [],
+        //     };
+        //     this.isNew = true;
+        //     productModal.show();
+        // },
+        //刪除商品
+        // delBtn(product){
+        // this.tempProduct = {...product};
+        // delProductModal.show();
+        // },
+        
         //新增圖片
         createImages(){
             this.tempProduct.imagesUrl = [];
@@ -111,11 +132,6 @@ let  delProductModal = null;
                 timer: 2000                  
             })
             })
-        },
-        //刪除商品
-        delBtn(product){
-        this.tempProduct = {...product};
-        delProductModal.show();
         },
         checkDelProduct(){
            axios.delete(`${this.baseUrl}/api/${this.apiPath}/admin/product/${this.tempProduct.id}`)
