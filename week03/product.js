@@ -11,7 +11,6 @@ let  delProductModal = null;
         selectedItem: {},
         products: [],
         isNew: true,
-        //todo !!!!!!!!!!!!
         tempProduct: {
             imagesUrl: [],
           },
@@ -96,7 +95,7 @@ let  delProductModal = null;
         // this.tempProduct = {...product};
         // delProductModal.show();
         // },
-        
+
         //新增圖片
         createImages(){
             this.tempProduct.imagesUrl = [];
