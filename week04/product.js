@@ -1,9 +1,9 @@
 
 import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
-import pagination from "./components/pagination/pagination.js"; //全域註冊
-import productsModal from "./components/modal/productsModal.js";
-import deleteModal from "./components/modal/deleteModal.js";
+import pagination from "./components/pagination.js"; //全域註冊
+import productsModal from "./components/productsModal.js";
+import deleteModal from "./components/deleteModal.js";
 
 let  productModal = null;
 let  delProductModal = null;
@@ -25,6 +25,8 @@ let  delProductModal = null;
     },
     components:{
         pagination,
+        productsModal,
+        deleteModal
     },
     mounted() {
         //讀取 token
@@ -43,12 +45,12 @@ let  delProductModal = null;
         checkIsAdmin(){
             axios.post(`${this.baseUrl}/v2/api/user/check`)
             .then(res => {
-                // Swal.fire({
-                //     icon: 'success',
-                //     title: '登入及驗證成功',
-                //     showConfirmButton: true,
-                //     timer: 2000
-                //   });
+                Swal.fire({
+                    icon: 'success',
+                    title: '登入及驗證成功',
+                    showConfirmButton: true,
+                    timer: 2000
+                  });
                 this.getData();
             })
             .catch(err => {

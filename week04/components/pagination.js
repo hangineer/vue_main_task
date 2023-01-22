@@ -12,7 +12,7 @@ export default{
         </li>
 
         <li class="page-item" :class = "{ disabled : !pagination.has_next }">
-          <a @click.prevent="getData(pagination.current_page + 1)"class="page-link" href="#">&raquo;</a>
+          <a @click.prevent="getData(pagination.current_page + 1)" class="page-link" href="#">&raquo;</a>
         </li>
       </ul>
     </nav>`
