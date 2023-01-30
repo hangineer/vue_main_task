@@ -7,7 +7,7 @@
     <!-- bs5 css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>week03</title>
+    <title>week04</title>
 </head>
 <body>
   <div id="app">
@@ -81,7 +81,7 @@
          aria-labelledby="delProductModalLabel" aria-hidden="true">
       <delete-modal
       :temp-product="tempProduct"
-      @delete-product="checkDelProduct"
+      @check-del-product="checkDelProduct"
       >
 
       </delete-modal>
@@ -191,7 +191,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="updateProduct">
+          <button type="button" class="btn btn-primary"  @click="$emit('updateProduct')">
             確認
           </button>
         </div>
@@ -215,7 +215,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-danger" @click="checkDelProduct">
+          <button type="button" class="btn btn-danger" @click="$emit('checkDelProduct')">
             確認刪除
           </button>
         </div>

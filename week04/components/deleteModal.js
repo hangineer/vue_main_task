@@ -1,4 +1,4 @@
 export default {
-    props: ['tempProduct', 'deleteProduct'],
+    props: ['tempProduct', 'checkDelProduct'],
     template: '#deleteModal'
 }

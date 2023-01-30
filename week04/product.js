@@ -63,8 +63,6 @@ let  delProductModal = null;
             .then(res => {
                 this.products = res.data.products
                 this.page = res.data.pagination
-                console.log("res!!!",res)
-                
             })
             .catch(err => { 
                 console.dir(err);
@@ -89,7 +87,7 @@ let  delProductModal = null;
                 this.isNew = true;
                 productModal.show();
             }else if(status === "delete"){
-                this.tempProduct = {...product};
+                this.tempProduct = product;
                 delProductModal.show();
             }
         },
